@@ -243,7 +243,7 @@ class OpeningHoursStateMachine
     entities.each do |entity|
       next_state = @state.process(entity, @opening_hours)
       if next_state.nil?
-#warn "ignore entity: [#{entity}]"
+        #warn "ignore entity: [#{entity}]"
       else
         @state = @states[next_state]
       end
@@ -262,7 +262,7 @@ parser = OpeningHoursStateMachine.new
 
 STDIN.each do |line|
   warn "Input:\t\t\t '#{line.strip}'"
-  # TODO: add lookbehind and lookahead in day pattern
+  # TODO: add lookbehind and lookahead in hour pattern
   line = line.strip.gsub(/([AP])\.M\./, '\1M')
 
   entities = line.scan(Patterns::DELIMITER)
